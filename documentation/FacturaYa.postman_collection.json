@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "dbbe2130-ee44-4623-8e9e-6f69854f1f0c",
+		"name": "FacturaYa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45972831"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Create Users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDc1MDI2OTZhYzNlOTZlYjE2YWMzNyIsImVtYWlsIjoidGVzdDVAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsImlhdCI6MTc1OTE3OTI3NywiZXhwIjoxNzU5Nzg0MDc3LCJpc3MiOiJGYWN0dXJhWWEifQ.ymAyu79cVkWJznEI4915N0xnLXLNmPRMbLsmI3Fgobw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test6@facturaYa.com\",\r\n    \"password\": \"1234567\",\r\n    \"nombre\": \"Usuario Test\"\r\n  }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read all",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDc1MDI2OTZhYzNlOTZlYjE2YWMzNyIsImVtYWlsIjoidGVzdDVAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsImlhdCI6MTc1OTE3OTI3NywiZXhwIjoxNzU5Nzg0MDc3LCJpc3MiOiJGYWN0dXJhWWEifQ.ymAyu79cVkWJznEI4915N0xnLXLNmPRMbLsmI3Fgobw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "Create clients",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDZjNTNjMzQxYTM1ZWI3ODE0N2Q2NiIsImVtYWlsIjoidGVzdDFAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsInJvbCI6IkFETUlOIiwicGVybWlzb3MiOltdLCJpYXQiOjE3NTg5MDU2ODIsImV4cCI6MTc1OTUxMDQ4MiwiaXNzIjoiRmFjdHVyYVlhIn0.OieGgrYCUAIVuukb7_hUSwiiUKVPpZxi5oXtURykHNI",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipoDocumento\": \"CC\",\r\n    \"numeroDocumento\": \"30292564\",\r\n    \"nombre\": \"Gustavo Ramirez\",\r\n    \"email\": \"ramirezgus@email.com\",\r\n    \"telefono\": \"3012438974\",\r\n    \"direccion\": \"Calle 123 #45-67\",\r\n    \"ciudad\": \"Manizales\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update clients",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDZjNTNjMzQxYTM1ZWI3ODE0N2Q2NiIsImVtYWlsIjoidGVzdDFAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsInJvbCI6IkFETUlOIiwicGVybWlzb3MiOltdLCJpYXQiOjE3NTg5MDU2ODIsImV4cCI6MTc1OTUxMDQ4MiwiaXNzIjoiRmFjdHVyYVlhIn0.OieGgrYCUAIVuukb7_hUSwiiUKVPpZxi5oXtURykHNI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"direccion\": \"Carrera 15 #20-30\",\r\n    \"ciudad\": \"Medellín\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/clientes/30292564",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"30292564"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reall all",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDZjNTNjMzQxYTM1ZWI3ODE0N2Q2NiIsImVtYWlsIjoidGVzdDFAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsInJvbCI6IkFETUlOIiwicGVybWlzb3MiOltdLCJpYXQiOjE3NTg5MDU2ODIsImV4cCI6MTc1OTUxMDQ4MiwiaXNzIjoiRmFjdHVyYVlhIn0.OieGgrYCUAIVuukb7_hUSwiiUKVPpZxi5oXtURykHNI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test5@facturaya.com\",\r\n    \"password\": \"1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
