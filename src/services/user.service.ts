@@ -2,7 +2,7 @@ import { Connection, connections, Error, Model } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import config from '../config/index.js';
 import { IUser } from '../types/user.types.js';
-import { userSchema } from '../schemas/users.schema.js';
+import { usuariosSchema } from '../schemas/users.schema.js';
 
 interface CreateUserData {
   email: string;
@@ -95,7 +95,7 @@ export class UserService {
   private static createModel() {
     this.validateConnection();
     if (!this.model) {
-      this.model = this.db === undefined ? null : this.db.model<IUser>('usuarios', userSchema);
+      this.model = this.db === undefined ? null : this.db.model<IUser>('usuarios', usuariosSchema);
     }
     if (!this.model) {
       throw new Error('Database not connected');
