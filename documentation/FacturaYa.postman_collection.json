@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "dbbe2130-ee44-4623-8e9e-6f69854f1f0c",
+		"_postman_id": "1852df3e-05fa-4d20-93ee-4bde9f094e33",
 		"name": "FacturaYa",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "45972831"
+		"_exporter_id": "33562332"
 	},
 	"item": [
 		{
@@ -49,7 +49,7 @@
 					"response": []
 				},
 				{
-					"name": "Read all",
+					"name": "Get All Users",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -58,7 +58,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDc1MDI2OTZhYzNlOTZlYjE2YWMzNyIsImVtYWlsIjoidGVzdDVAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsImlhdCI6MTc1OTE3OTI3NywiZXhwIjoxNzU5Nzg0MDc3LCJpc3MiOiJGYWN0dXJhWWEifQ.ymAyu79cVkWJznEI4915N0xnLXLNmPRMbLsmI3Fgobw",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDc1MDI2OTZhYzNlOTZlYjE2YWMzNyIsImVtYWlsIjoidGVzdDVAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsImlhdCI6MTc2MDMyMzI0NSwiZXhwIjoxNzYwMzMwNDQ1LCJpc3MiOiJGYWN0dXJhWWEifQ.JBE1XAbadHh_eXNOqIeRwhk27vHZA29yRqd9OEI2yUQ",
 								"type": "text"
 							}
 						],
@@ -73,6 +73,40 @@
 								"api",
 								"v1",
 								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test5@facturaya.com\",\r\n    \"password\": \"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
 							]
 						}
 					},
@@ -198,38 +232,218 @@
 			]
 		},
 		{
-			"name": "Login",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"test5@facturaya.com\",\r\n    \"password\": \"1234567\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "Get All Categorias",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDc1MDI2OTZhYzNlOTZlYjE2YWMzNyIsImVtYWlsIjoidGVzdDVAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsImlhdCI6MTc2MDMxNDgxNywiZXhwIjoxNzYwMzIyMDE3LCJpc3MiOiJGYWN0dXJhWWEifQ.o7cOqu-wJWDMLY9Tkd56oJH6yK84GWbqICoqNqM_U08",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"categorias"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5000/api/v1/auth/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"v1",
-						"auth",
-						"login"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Productos",
+			"item": []
+		},
+		{
+			"name": "Facturas",
+			"item": [
+				{
+					"name": "Crear Factura",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDc1MDI2OTZhYzNlOTZlYjE2YWMzNyIsImVtYWlsIjoidGVzdDVAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsImlhdCI6MTc2MDMyMzQ0NiwiZXhwIjoxNzYwMzMwNjQ2LCJpc3MiOiJGYWN0dXJhWWEifQ.pifUMQBCzs6NaJVWLj6vDF8kZHQL1teCBZxBun5NaDM"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"clienteId\": \"68d7504b96ac3e96eb16ac3a\",\n    \"items\": [\n      {\n        \"productoId\": \"68ec540f7730bdde5a4795f9\",\n        \"cantidad\": 2\n      },\n      {\n        \"productoId\": \"68d594c2404c01073555e1df\",\n        \"cantidad\": 1\n      }\n    ]\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/facturas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"facturas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detalle Factura ById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDc1MDI2OTZhYzNlOTZlYjE2YWMzNyIsImVtYWlsIjoidGVzdDVAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsImlhdCI6MTc2MDMyMzQ0NiwiZXhwIjoxNzYwMzMwNjQ2LCJpc3MiOiJGYWN0dXJhWWEifQ.pifUMQBCzs6NaJVWLj6vDF8kZHQL1teCBZxBun5NaDM"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/facturas/68ec6867331d60034a3c1a10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"facturas",
+								"68ec6867331d60034a3c1a10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Factura By Consecutivo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDc1MDI2OTZhYzNlOTZlYjE2YWMzNyIsImVtYWlsIjoidGVzdDVAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsImlhdCI6MTc2MDMyMzQ0NiwiZXhwIjoxNzYwMzMwNjQ2LCJpc3MiOiJGYWN0dXJhWWEifQ.pifUMQBCzs6NaJVWLj6vDF8kZHQL1teCBZxBun5NaDM"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/facturas/consecutivo/1002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"facturas",
+								"consecutivo",
+								"1002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Facturas By Cliente",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDc1MDI2OTZhYzNlOTZlYjE2YWMzNyIsImVtYWlsIjoidGVzdDVAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsImlhdCI6MTc2MDMyMzQ0NiwiZXhwIjoxNzYwMzMwNjQ2LCJpc3MiOiJGYWN0dXJhWWEifQ.pifUMQBCzs6NaJVWLj6vDF8kZHQL1teCBZxBun5NaDM"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/facturas/cliente/68d7504b96ac3e96eb16ac3a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"facturas",
+								"cliente",
+								"68d7504b96ac3e96eb16ac3a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Estado",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDc1MDI2OTZhYzNlOTZlYjE2YWMzNyIsImVtYWlsIjoidGVzdDVAZmFjdHVyYXlhLmNvbSIsIm5vbWJyZSI6IlVzdWFyaW8gVGVzdCIsImlhdCI6MTc2MDMyMzQ0NiwiZXhwIjoxNzYwMzMwNjQ2LCJpc3MiOiJGYWN0dXJhWWEifQ.pifUMQBCzs6NaJVWLj6vDF8kZHQL1teCBZxBun5NaDM"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"estado\": \"PAGADA\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/facturas/68ec6867331d60034a3c1a10/estado",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"facturas",
+								"68ec6867331d60034a3c1a10",
+								"estado"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
