@@ -26,6 +26,15 @@ app.use(`${config.api.prefix}/categorias`, categoriasRoutes);
 app.use(`${config.api.prefix}/productos`, productosRoutes);
 app.use(`${config.api.prefix}/facturas`, facturasRoutes);
 
+// Health check endpoint para monitoring y warm-up
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    service: 'FacturaYa API',
+    uptime: process.uptime()
+  });
+});
 
 const startServer = async () => {
   try {

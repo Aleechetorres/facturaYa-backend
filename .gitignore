@@ -56,4 +56,4 @@ coverage/
 .azure/
 
 # Docker
-*.dockerignore
+# (removido *.dockerignore - debe estar en Git para builds consistentes)
