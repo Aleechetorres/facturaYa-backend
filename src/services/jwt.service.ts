@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { Secret, SignOptions } from 'jsonwebtoken';
 import config from '../config/index.js';
 import { IUser } from '../types/user.types.js';
 
@@ -11,13 +11,13 @@ export class JwtService {
       nombre: user.nombre
     };
 
-    const secret = config.jwt.secret as string;
-    const expiration = config.jwt.expiration as string;
-
-    return jwt.sign(payload, secret, {
-      expiresIn: expiration,
+    const secret: Secret = config.jwt.secret as string;
+    const options: SignOptions = {
+      expiresIn: config.jwt.expiration as string,
       issuer: 'FacturaYa'
-    });
+    };
+
+    return jwt.sign(payload, secret, options);
   }
 
   static verifyToken(token: string): any {
