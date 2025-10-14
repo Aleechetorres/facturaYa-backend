@@ -11,8 +11,8 @@ WORKDIR /app
 # Copiar archivos de dependencias
 COPY package*.json ./
 
-# Instalar dependencias
-RUN npm ci --only=production
+# Instalar TODAS las dependencias (incluidas dev para compilar TypeScript)
+RUN npm ci
 
 # Copiar código fuente
 COPY . .
@@ -26,10 +26,14 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copiar solo lo necesario desde builder
-COPY --from=builder /app/node_modules ./node_modules
+# Copiar package files
+COPY package*.json ./
+
+# Instalar SOLO dependencias de producción
+RUN npm ci --only=production
+
+# Copiar código compilado desde builder
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package*.json ./
 
 # Variables de entorno por defecto (serán sobrescritas en Render)
 ENV NODE_ENV=production
