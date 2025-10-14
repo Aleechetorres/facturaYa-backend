@@ -11,14 +11,13 @@ export class JwtService {
       nombre: user.nombre
     };
 
-    return jwt.sign(
-      payload,
-      config.jwt.secret as string,
-      {
-        expiresIn: config.jwt.expiration as string,
-        issuer: 'FacturaYa'
-      }
-    );
+    const secret = config.jwt.secret as string;
+    const expiration = config.jwt.expiration as string;
+
+    return jwt.sign(payload, secret, {
+      expiresIn: expiration,
+      issuer: 'FacturaYa'
+    });
   }
 
   static verifyToken(token: string): any {
