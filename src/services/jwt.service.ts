@@ -15,7 +15,7 @@ export class JwtService {
       payload,
       config.jwt.secret as string,
       {
-        expiresIn: config.jwt.expiration,
+        expiresIn: config.jwt.expiration as string,
         issuer: 'FacturaYa'
       }
     );
