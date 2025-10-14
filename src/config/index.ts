@@ -2,11 +2,8 @@ import { config } from 'dotenv';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-const envFound = config();
-
-if (envFound.error) {
-  throw new Error("Couldn't find .env file");
-}
+// Solo cargar .env si existe (en desarrollo). En producción (Docker/Render) las variables vienen del sistema
+config();
 
 export default {
   api: {
