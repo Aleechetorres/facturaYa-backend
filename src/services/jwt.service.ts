@@ -11,9 +11,9 @@ export class JwtService {
       nombre: user.nombre
     };
 
-    const secret: Secret = config.jwt.secret as string;
-    const options: SignOptions = {
-      expiresIn: (config.jwt.expiration || '2h') as string,
+    const secret = config.jwt.secret as string;
+    const options = {
+      expiresIn: config.jwt.expiration || '2h',
       issuer: 'FacturaYa'
     };
 
