@@ -13,7 +13,7 @@ export class JwtService {
 
     const secret: Secret = config.jwt.secret as string;
     const options: SignOptions = {
-      expiresIn: config.jwt.expiration as string,
+      expiresIn: (config.jwt.expiration || '2h') as string,
       issuer: 'FacturaYa'
     };
 
