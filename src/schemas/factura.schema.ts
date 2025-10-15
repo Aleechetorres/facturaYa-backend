@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import { IFactura } from '../types/factura.types';
+import { IFactura } from '../types/factura.types.js';
 
 export const facturaSchema = new Schema<IFactura>(
   {

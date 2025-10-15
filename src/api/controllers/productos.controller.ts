@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ProductoService } from '../../services/producto.service';
+import { ProductoService } from '../../services/producto.service.js';
 import { CategoriaService } from '../../services/categoria.service.js';
 import { createProductoDto, updateProductoDto } from '../../dtos/producto.dto.js';
 

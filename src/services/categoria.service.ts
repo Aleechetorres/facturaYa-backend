@@ -1,5 +1,5 @@
 import { Connection, Model, connections } from 'mongoose';
-import { ICategoria } from '../types/categoria.types';
+import { ICategoria } from '../types/categoria.types.js';
 import { categoriaSchema } from '../schemas/categoria.schema.js';
 
 interface CreateCategoriaData {
