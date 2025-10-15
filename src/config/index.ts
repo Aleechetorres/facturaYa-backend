@@ -14,6 +14,6 @@ export default {
 
   jwt: {
     secret: process.env.JWT_SECRET || 'FACTURA_YA_JWT_SECRET',
-    expiration: process.env.JWT_EXPIRATION || '2h'
+    expiration: (process.env.JWT_EXPIRATION as string) || '2h'
   }
 }
