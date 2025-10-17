@@ -9,9 +9,6 @@ trigger:
 pool:
   name: 'Default'
 
-variables:
-  NODE_VERSION: '20.x'
-
 stages:
   - stage: Build
     displayName: 'Build and Validate'
@@ -19,11 +16,11 @@ stages:
       - job: BuildJob
         displayName: 'Build Application'
         steps:
-          - task: NodeTool@0
-            displayName: 'Install Node.js'
-            inputs:
-              versionSpec: $(NODE_VERSION)
-
+          - script: |
+              node --version
+              npm --version
+            displayName: 'Check Node and npm versions'
+          
           - script: |
               echo "Installing dependencies..."
               npm ci
