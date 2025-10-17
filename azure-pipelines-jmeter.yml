@@ -1,0 +1,67 @@
+# Pipeline de Pruebas Automatizadas con JMeter
+# Ejecuta pruebas de carga y genera reportes HTML
+
+trigger: none  # Se ejecuta manualmente
+
+pool:
+  name: 'Default'
+
+variables:
+  JMETER_HOME: '/home/$(whoami)/apache-jmeter-5.6.3'
+  TEST_DIR: '$(Build.SourcesDirectory)/jmeter-tests'
+  REPORT_DIR: '$(Build.ArtifactStagingDirectory)/jmeter-reports'
+
+stages:
+  - stage: JMeterTests
+    displayName: 'Execute JMeter Load Tests'
+    jobs:
+      - job: RunTests
+        displayName: 'Run JMeter Tests'
+        steps:
+          - script: |
+              echo "Verifying JMeter installation..."
+              jmeter --version
+            displayName: 'Verify JMeter Installation'
+
+          - script: |
+              echo "Creating report directory..."
+              mkdir -p $(REPORT_DIR)
+            displayName: 'Create Report Directory'
+
+          - script: |
+              echo "Listing test files..."
+              ls -la $(TEST_DIR)
+            displayName: 'List JMeter Test Files'
+
+          - script: |
+              echo "Running JMeter tests..."
+              for jmx_file in $(TEST_DIR)/*.jmx; do
+                if [ -f "$jmx_file" ]; then
+                  filename=$(basename "$jmx_file" .jmx)
+                  echo "Executing test: $filename"
+
+                  jmeter -n \
+                    -t "$jmx_file" \
+                    -l "$(REPORT_DIR)/${filename}-results.jtl" \
+                    -e \
+                    -o "$(REPORT_DIR)/${filename}-html-report"
+
+                  echo "Test $filename completed"
+                fi
+              done
+            displayName: 'Execute JMeter Tests'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish JMeter Reports'
+            inputs:
+              PathtoPublish: '$(REPORT_DIR)'
+              ArtifactName: 'jmeter-test-reports'
+              publishLocation: 'Container'
+            condition: always()
+
+          - script: |
+              echo "========================================="
+              echo "JMeter tests completed!"
+              echo "Download reports from Artifacts section"
+              echo "========================================="
+            displayName: 'Test Summary'
