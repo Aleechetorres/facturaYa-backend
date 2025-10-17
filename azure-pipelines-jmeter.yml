@@ -7,7 +7,7 @@ pool:
   name: 'Default'
 
 variables:
-  JMETER_HOME: '/home/$(whoami)/apache-jmeter-5.6.3'
+  JMETER_HOME: '/home/ale/apache-jmeter-5.6.3'
   TEST_DIR: '$(Build.SourcesDirectory)/jmeter-tests'
   REPORT_DIR: '$(Build.ArtifactStagingDirectory)/jmeter-reports'
 
