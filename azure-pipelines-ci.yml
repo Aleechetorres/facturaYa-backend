@@ -1,0 +1,47 @@
+# Pipeline de CI para FacturaYa Backend
+# Solo ejecuta build, NO hace deploy (deploy lo hace Render.com)
+
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  name: 'Default'
+
+variables:
+  NODE_VERSION: '20.x'
+
+stages:
+  - stage: Build
+    displayName: 'Build and Validate'
+    jobs:
+      - job: BuildJob
+        displayName: 'Build Application'
+        steps:
+          - task: NodeTool@0
+            displayName: 'Install Node.js'
+            inputs:
+              versionSpec: $(NODE_VERSION)
+
+          - script: |
+              echo "Installing dependencies..."
+              npm ci
+            displayName: 'Install Dependencies'
+
+          - script: |
+              echo "Building TypeScript project..."
+              npm run build
+            displayName: 'Build Project'
+
+          - script: |
+              echo "Verifying build output..."
+              ls -la dist/
+            displayName: 'Verify Build Output'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Build Artifacts'
+            inputs:
+              PathtoPublish: 'dist'
+              ArtifactName: 'build-output'
+              publishLocation: 'Container'
