@@ -7,7 +7,7 @@ pool:
   name: 'Default'
 
 variables:
-  JMETER_HOME: '/opt/jmeter/bin/jmeter'
+  JMETER_BIN: '/opt/jmeter/bin/jmeter'
   TEST_DIR: '$(Build.SourcesDirectory)/jmeter-tests'
   REPORT_DIR: '$(Build.ArtifactStagingDirectory)/jmeter-reports'
 
@@ -20,7 +20,7 @@ stages:
         steps:
           - script: |
               echo "Verifying JMeter installation..."
-              jmeter --version
+              $(JMETER_BIN) --version
             displayName: 'Verify JMeter Installation'
 
           - script: |
@@ -40,7 +40,7 @@ stages:
                   filename=$(basename "$jmx_file" .jmx)
                   echo "Executing test: $filename"
 
-                  jmeter -n \
+                  $(JMETER_BIN) -n \
                     -t "$jmx_file" \
                     -l "$(REPORT_DIR)/${filename}-results.jtl" \
                     -e \
